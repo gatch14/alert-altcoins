@@ -7,6 +7,7 @@ use Auth;
 use App\Altcoin;
 use App\Controllers\StoreAndCheckApiDataController;
 use App\Http\Requests\CreateAlertFormRequest;
+use App\Http\Requests\UpdateAlertFormRequest;
 
 class AlertAltcoinsController extends Controller
 {
@@ -55,6 +56,7 @@ class AlertAltcoinsController extends Controller
             'name' => strtoupper(request('name')),
             'price' => request('price'),
             'choices' => request('choices'),
+            'choices_value' => request('choices_value'),
             'user_id' => Auth::user()->id,
         ]);
         return redirect()->route('alert-altcoins.index');
@@ -78,13 +80,16 @@ class AlertAltcoinsController extends Controller
      */
     public function edit($id)
     {
-        $altcoin = Altcoin::findOrFail($id);
-        if ( $altcoin->user_id == Auth::user()->id) {
-            return view('alert-altcoins-edit', compact('altcoin'));
+        $altcoin = Altcoin::find($id);
+        if ($altcoin) {        
+            if ( $altcoin->user_id == Auth::user()->id) {
+                return view('alert-altcoins-edit', compact('altcoin'));
+            } else {
+                dd('erreur');
+            }    
         } else {
-            dd('erreur');
-        }       
-        
+            dd('pas en bdd');
+        }    
     }
 
     /**
@@ -94,13 +99,15 @@ class AlertAltcoinsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAlertFormRequest $request, $id)
     {
+
         $altcoin = Altcoin::findOrFail($id);
         $altcoin->update([
             'name' => $altcoin->name,
             'price' => request('price'),
             'choices' => request('choices'),
+            'choices_value' => request('choices_value'),
         ]);
         return redirect()->route('alert-altcoins.index');
     }

@@ -43,6 +43,16 @@
 
         {!! $errors->first('choices', '<p>:message</p>') !!}
 
+        {!! Form::label('choices_value', 'Alerte en BTC : ') !!}
+
+        {!! Form::radio('choices_value', 'BTC') !!}
+
+        {!! Form::label('choices_value', 'Alerte en $ : ') !!}
+
+        {!! Form::radio('choices_value', '$') !!}
+
+        {!! $errors->first('choices_value', '<p>:message</p>') !!}
+
         {!! Form::submit("M'alerter !") !!}
 
         {!! Form::close() !!}

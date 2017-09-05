@@ -40,7 +40,7 @@
                 {{ $altcoin->name }}
             </div>
             <div class="col-md-3">
-                {{ $altcoin->choices }} {{ $altcoin->price }}
+                {{ $altcoin->choices }} {{ $altcoin->price }} {{ $altcoin->choices_value }}
             </div>
             <div class="col-md-3">
                 <a href="{{ route('alert-altcoins.edit', $altcoin) }}">Update</a>

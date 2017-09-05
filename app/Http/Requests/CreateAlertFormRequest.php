@@ -38,6 +38,7 @@ class CreateAlertFormRequest extends FormRequest
             'name' => 'required|in:' . implode(',', $symbol),
             'price' => 'required|numeric|between:0.00000001,1000000',
             'choices' => 'required|in:high,low', 
+            'choices_value' => 'required|in:BTC,$', 
         ];
     }
 }

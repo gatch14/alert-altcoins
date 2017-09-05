@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Altcoin extends Model
 {
-    protected $fillable = ['name', 'price', 'choices', 'user_id'];
+    protected $fillable = ['name', 'price', 'choices', 'choices_value', 'user_id'];
 }

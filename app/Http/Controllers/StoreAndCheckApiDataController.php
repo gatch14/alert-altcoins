@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class StoreAndCheckApiDataController extends Controller
 {
+
+	// recuperation des données et stockage dans un fichier Json
     public function storeInJson()
     {
     	//creation du fichier Json
@@ -28,6 +30,7 @@ class StoreAndCheckApiDataController extends Controller
   	
     }
 
+    // pour lire le fichier Json pour vérification
     public function readJson()
     {
     	//on cherche le fichier Json pour le lire
@@ -39,6 +42,8 @@ class StoreAndCheckApiDataController extends Controller
 	    }
 	}
 
+
+	// vérification si un symbol est present dans le fichier Json
 	public function checkSymbol($symbol)
 	{
     	//on cherche le fichier Json pour le lire
