@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\SendAlert;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +24,8 @@ Route::get('/read-data', 'StoreAndCheckApiDataController@readJson');
 Route::resource('alert-altcoins', 'AlertAltcoinsController');
 
 Route::get('/check-alert', 'AlertsController@index');
+Route::get('/test', 'AlertsController@test');
+
+//test email
+
+Route::get('/test-email', 'AlertsController@store');
